@@ -1,0 +1,17 @@
+page {
+  background: #fff;
+  font-size: $font-size;
+  color: #333;
+}
+image {
+  vertical-align: top;
+}
+button {
+  ::after {
+    border: none;
+  }
+}
+view,
+text {
+  box-sizing: border-box;
+}

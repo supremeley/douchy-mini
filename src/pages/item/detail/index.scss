@@ -1,0 +1,123 @@
+page {
+  background: #eeeeee;
+}
+.swiper-content {
+  height: 480px;
+}
+.swiper-img {
+  height: 480px;
+  width: 100%;
+}
+.detail {
+  &-container {
+    background: #fff;
+    margin-bottom: 20px;
+  }
+  &-price {
+    height: 96px;
+    line-height: 96px;
+    font-size: 32px;
+    font-weight: 500;
+    padding: 0 30px;
+    background: yellow;
+  }
+  &-info {
+    padding: 24px 30px 0;
+    &__title {
+      font-weight: 500;
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+    &__desc {
+      font-size: 24px;
+      color: #878787;
+    }
+  }
+  &-tag {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    &__item {
+      font-size: 24px;
+      border: 1px solid #000;
+      border-radius: 20px;
+      line-height: 38px;
+      flex: 0 0 72px;
+      text-align: center;
+      margin: 10px 10px;
+    }
+  }
+}
+.server {
+  &-container {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 30px;
+  }
+  &-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    line-height: 60px;
+    &__title {
+      font-size: 24px;
+      color: #878787;
+      flex-shrink: 0;
+      margin-right: 30px;
+    }
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+
+      &-info {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        margin-right: 32px;
+        &__icon {
+          width: 24px;
+          height: 24px;
+          margin-right: 12px;
+        }
+      }
+    }
+    .at-icon {
+      line-height: 60px;
+    }
+  }
+}
+.info {
+  &-container {
+    background: #fff;
+    padding-bottom: 90px;
+  }
+  &-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 2.5;
+    border-bottom: 2px solid #000;
+  }
+}
+.footer {
+  height: 90px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  &-btn {
+    padding: 0;
+    background: #000;
+    flex: 1;
+    border-radius: 0;
+    color: #fff;
+    &::after {
+      border: none;
+    }
+  }
+  .cart-btn {
+    background: #1afa29;
+  }
+}
