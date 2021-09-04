@@ -8,8 +8,8 @@
     justify-content: center;
   }
   &-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
   &-circle {
     width: 100%;
@@ -18,7 +18,6 @@
     top: 0;
     left: 0;
     animation: loading 1.25s ease-in-out infinite;
-
     &__item {
       width: 10px;
       height: 10px;
@@ -30,6 +29,7 @@
       margin-left: -5px;
       transform-origin: center 60px;
       transform: rotate(22deg);
+      transition: 0.1s;
     }
   }
 }
@@ -38,6 +38,6 @@
     transform: rotate(0);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }

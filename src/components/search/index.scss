@@ -1,0 +1,33 @@
+.search {
+  &-container {
+    // position: sticky;
+    // top: 0;
+    // z-index: 1;
+    // margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 0 16px;
+    border: 2px solid #bb8100;
+  }
+  &-icon {
+    width: 40px;
+    height: 36px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+  &-inp {
+    flex: 1;
+    &-placeholder {
+      margin-right: 24px;
+      color: $global-text-gray;
+    }
+  }
+  &-close {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+  }
+}

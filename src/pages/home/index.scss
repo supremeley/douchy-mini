@@ -1,5 +1,5 @@
 page {
-  background: #fff;
+  // background: #fff;
   padding-bottom: 180px;
 }
 .swiper {
@@ -74,7 +74,7 @@ page {
   &-logo {
     width: 100%;
     height: 90px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
   }
   &-swiper {
     height: 460px;
@@ -182,40 +182,6 @@ page {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      &-item {
-        flex-basis: calc(100vw / 2 - 16px);
-        padding: 6px 8px;
-        height: 630px;
-        box-shadow: 0 6px 4px rgba(0, 0, 0, 0.15);
-        margin-bottom: 24px;
-        &__img {
-          width: 100%;
-          height: 466px;
-          margin-bottom: 18px;
-          background: #e7d4ae;
-        }
-        &__name {
-          padding: 0 20px;
-          line-height: 30px;
-          font-weight: 500;
-          margin-bottom: 18px;
-          font-weight: 24px;
-        }
-        &__info {
-          padding: 0 20px;
-          display: flex;
-          justify-content: space-between;
-          &-pirce {
-            font-weight: 26px;
-            // font-weight: 500;
-            color: #c3a669;
-          }
-          &-icon {
-            width: 44px;
-            height: 44px;
-          }
-        }
-      }
     }
   }
   &-more {
@@ -233,6 +199,11 @@ page {
       height: 30px;
       margin-left: 24px;
     }
+  }
+}
+.first-palte {
+  .plate-logo {
+    margin-bottom: 80px;
   }
 }
 .second {
@@ -295,24 +266,34 @@ page {
     // color: #7f7f7f;
   }
 }
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 101;
-  animation: into .25s ease-in-out;
-}
-@keyframes into {
-  0% {
-    opacity: 0;
+.popup-vip {
+  background: url('http://121.5.150.116/dist/douchy-imgs/popup/popup-vip.png') no-repeat 0 / 100%;
+  padding-top: 90px;
+  .popup-vip-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 32px;
+    height: 32px;
   }
-  100% {
-    opacity: 1;
+  .popup-logo {
+    width: 320px;
+    height: 100px;
+    transform: translateX(- 6px);
+
+  }
+  .popup-content {
+    width: 365px;
+    height: 100px;
+    margin-top: 40px;
+    transform: translateX(- 6px);
   }
 }
-.loading-container {
-  margin: 80px auto;
+.loading-content {
+  padding: 450px 0;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  height: 100vh;
+  width: 100vw;
 }

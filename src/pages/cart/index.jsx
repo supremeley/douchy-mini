@@ -1,61 +1,48 @@
-import Taro,{getCurrentPages} from '@tarojs/taro'
+import Taro, { getCurrentPages } from '@tarojs/taro'
 import { Component } from 'react'
 import { View, Image, Text, Button } from '@tarojs/components'
+import Default from '@/components/default'
 import Tabbar from '@/components/tab-bar'
 
-import t1 from '@/assets/imgs/home/bg1.jpg'
-import t2 from '@/assets/imgs/home/bg2.jpg'
-import t3 from '@/assets/imgs/home/bg3.jpg'
-import t4 from '@/assets/imgs/home/bg4.jpg'
+// import t1 from '@/assets/imgs/home/bg1.jpg'
+// import t2 from '@/assets/imgs/home/bg2.jpg'
+// import t3 from '@/assets/imgs/home/bg3.jpg'
+// import t4 from '@/assets/imgs/home/bg4.jpg'
 
-import 'taro-ui/dist/style/components/input-number.scss'
 import 'taro-ui/dist/style/components/icon.scss'
+
+import Footer from './components/footer'
 
 import './index.scss'
 
 class Cart extends Component {
   state = {
+    navList: [
+      {
+        name: '免费试衣'
+      },
+      {
+        name: '立即定制'
+      }
+    ],
+    curNav: 0,
     goodsList: [
       {
-        price: 1,
-        pic: t1,
-        title: '高定',
+        name: 'DouchySandquist不规则蕾丝拼接吊带',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/item/g1.png',
+        price: '1,680',
+        priceNumber: 1680,
         id: 1,
+        selected: false,
         number: 1
       },
       {
-        price: 2,
-        pic: t2,
-        title: '轻奢',
-        id: 1,
-        number: 1
-      },
-      {
-        price: 3,
-        pic: t3,
-        title: '高定',
-        id: 1,
-        number: 1
-      },
-      {
-        price: 4,
-        pic: t4,
-        title: '轻奢',
-        id: 1,
-        number: 1
-      },
-      {
-        price: 5,
-        pic: t1,
-        title: '高定',
-        id: 1,
-        number: 1
-      },
-      {
-        price: 6,
-        pic: t2,
-        title: '轻奢',
-        id: 1,
+        name: 'DouchySandquist不规则蕾丝拼接吊带',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/item/g1.png',
+        price: '3,680',
+        priceNumber: 3680,
+        id: 2,
+        selected: false,
         number: 1
       }
     ]
@@ -64,7 +51,6 @@ class Cart extends Component {
   componentDidShow() {
     // console.log(.getTabBar())
     // const page = getCurrentPages()[0]
-
     // if (typeof page.getTabBar === 'function' && page.getTabBar()) {
     //   page.getTabBar().setData({
     //     selected: 2
@@ -76,12 +62,26 @@ class Cart extends Component {
     Taro.navigateTo({ url: `/pages/checkout/index` })
   }
 
+  onJumpToAllSeries = () => {
+    Taro.navigateTo({ url: `/pages/series/all/index` })
+  }
+
+  onJumpToAddress = () => {
+    Taro.navigateTo({ url: `/pages/member/address/list/index?type=select` })
+  }
+
+  onSelectNav = (index) => () => {
+    this.setState({ curNav: index })
+  }
+
   selectGoods = (index) => () => {
     const { goodsList } = this.state
 
-    goodsList[index].selected = !goodsList[index].selected
+    let gl = goodsList.concat()
 
-    this.setState({ goodsList })
+    gl[index].selected = !goodsList[index].selected
+
+    this.setState({ goodsList: gl })
   }
 
   selectAllGoods = () => {
@@ -95,6 +95,18 @@ class Cart extends Component {
     })
 
     this.setState({ goodsList: list })
+  }
+
+  deleteGoods = (e, index) => {
+    e.stopPropagation()
+
+    const { goodsList } = this.state
+
+    let gl = goodsList.concat()
+
+    gl.splice(index, 1)
+
+    this.setState({ goodsList: gl })
   }
 
   handleChange = (e, index, type) => {
@@ -116,6 +128,8 @@ class Cart extends Component {
   get allSelected() {
     const { goodsList } = this.state
 
+    if (!goodsList.length) return false
+
     let allSelected = goodsList.every((item) => item.selected)
 
     return allSelected
@@ -135,83 +149,71 @@ class Cart extends Component {
 
   get selectedPrice() {
     return this.selectedGoods.reduce((val, item) => {
-      return val + item.price
+      // console.log()
+      return val + Number(item.priceNumber)
     }, 0)
   }
 
   render() {
-    const { goodsList } = this.state
+    const { navList, curNav, goodsList } = this.state
 
     const GoodsList =
       goodsList &&
       goodsList.map((item, index) => {
         return (
-          <View key={item.url} className='goods-item-container'>
-            <View className='goods-item' onClick={this.selectGoods(index)}>
-              <View className={`circle ${item.selected ? 'active' : ''}`}>
-                {/* <View className='label'></View> */}
-                <View className='at-icon at-icon-check'></View>
-              </View>
-              <Image src={item.pic} mode='aspectFill' className='goods-img'></Image>
-              <View className='goods-info'>
-                <View className='goods-info__title'>
-                  <View className='goods-info__title-name'>{item.title}</View>
-                  <View className='goods-info__title-price'>
-                    <Text className='goods-info__title-price-i'>￥</Text>
-                    {item.price}
-                  </View>
-                </View>
-                <View className='goods-info__detail'>
-                  <View>
-                    <Text className='goods-info__tag'>{item.title}</Text>
-                  </View>
-                  {/* <View className='goods-info__sales'>已售{item.price}</View> */}
-                </View>
-                <View className='goods-info__bottom'>
-                  <View className='goods-info__bottom-opt'>
-                    <View
-                      className='at-icon at-icon-add-circle'
-                      onClick={(e) => this.handleChange(e, index, 'add')}
-                    ></View>
-                    <View>{item.number}</View>
-                    <View
-                      className='at-icon at-icon-subtract-circle'
-                      onClick={(e) => this.handleChange(e, index, 'minus')}
-                    ></View>
-                  </View>
-                </View>
+          <View key={item.url} className='goods-item' onClick={this.selectGoods(index)}>
+            <View className={`circle ${item.selected && 'active'}`}>
+              <View className='at-icon at-icon-check'></View>
+            </View>
+            <Image src={item.pic} mode='aspectFill' className='goods-item__img' />
+            <View className='goods-item__info'>
+              <View className='goods-item__info-name'>{item.name}</View>
+              <View className='goods-item__info-size'>38</View>
+              <View className='goods-item__info-bottom'>
+                <View className='goods-item__info-bottom__price'>￥{item.price}</View>
+                <View className='goods-item__info-bottom__num'>数量{item.number}</View>
               </View>
             </View>
-            <View className='goods-item-del-btn'>删除</View>
+            <View
+              className='at-icon at-icon-close'
+              onClick={(e) => this.deleteGoods(e, index)}
+            ></View>
           </View>
         )
       })
 
     return (
-      <View className='index'>
-        <View className='title-plate'>
-          <View>共{goodsList.length}件商品</View>
-          {/* <View onClick={this.onCheck}>{isManaged ? '完成' : '管理'}</View> */}
+      <View className='cart'>
+        <View className='nav'>
+          {navList &&
+            navList.map((item, index) => {
+              return (
+                <View
+                  key={item.name}
+                  className={`nav-item ${index === curNav && 'active-item'}`}
+                  onClick={this.onSelectNav(index)}
+                >
+                  {item.name}
+                </View>
+              )
+            })}
         </View>
-        <View className='goods'>{GoodsList}</View>
-        <View className='footer'>
-          <View className='footer-left' onClick={this.selectAllGoods}>
-            <View className={`circle ${this.allSelected ? 'active' : ''}`}>
-              {/* <View className='label'></View> */}
-              <View className='at-icon at-icon-check'></View>
+        <View className='content'>
+          {goodsList.length > 0 ? (
+            GoodsList
+          ) : (
+            <View className='default'>
+              <Default msg='购物车空空如也' explain='快去逛逛吧~' />
             </View>
-            已选（{this.selectedNum}）
-          </View>
-
-          <View className='footer-info'>
-            <View className='footer-info__price'>商品金额: ￥{this.selectedPrice}</View>
-            <View className='footer-info__explatin'>应付金额以实际结算为准</View>
-          </View>
-
-          <View className='footer-btn' onClick={this.onJump}>
-            下单
-          </View>
+          )}
         </View>
+        <Footer
+          total={this.selectedPrice}
+          allSelected={this.allSelected}
+          onSelectAll={this.selectAllGoods}
+          onClickLook={this.onJumpToAllSeries}
+          onCheckout={this.onJumpToAddress}
+        />
         <Tabbar />
       </View>
     )

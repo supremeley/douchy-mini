@@ -1,23 +1,26 @@
 import { Component } from 'react'
 import { View, Image, Text } from '@tarojs/components'
 
-import DefaultIcon from '@/assets/imgs/default-icon.png'
+import DefaultIcon from '@/assets/imgs/logo-default.png'
+
 import './index.scss'
 
 class Default extends Component {
   defaultProps = {
-    text: null
+    msg: null,
+    explain: false
   }
 
   state = {}
 
   render() {
-    const { text } = this.props
+    const { msg, explain } = this.props
 
     return (
       <View className='default-container'>
-        <Image src={DefaultIcon} className='default-icon' />
-        <View className='default-text'>{text || '暂无相关数据'}</View>
+        <Image src={DefaultIcon} mode='widthFix' className='default-icon' />
+        <View className='default-text'>{msg || '暂无相关数据'}</View>
+        {explain && <View className='default-text'>{explain}</View>}
       </View>
     )
   }

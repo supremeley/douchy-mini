@@ -10,7 +10,7 @@ const store = configStore()
 
 class App extends Component {
   componentDidMount() {
-    Taro.redirectTo({ url: '/pages/entry/index' })
+    // Taro.redirectTo({ url: '/pages/entry/index' })
   }
 
   componentDidShow() {}

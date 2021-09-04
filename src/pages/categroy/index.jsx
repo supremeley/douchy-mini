@@ -1,67 +1,69 @@
 import Taro, { getCurrentPages } from '@tarojs/taro'
 import { Component } from 'react'
-import { View, Image, Text } from '@tarojs/components'
-import { AtSearchBar, AtTabs, AtTabsPane } from 'taro-ui'
+import { View, Image, ScrollView } from '@tarojs/components'
 import Tabbar from '@/components/tab-bar'
+// import LoadingStart from '@/components/loading-start'
 
-import t1 from '@/assets/imgs/home/bg1.jpg'
-import t2 from '@/assets/imgs/home/bg2.jpg'
-import t3 from '@/assets/imgs/home/bg3.jpg'
-import t4 from '@/assets/imgs/home/bg4.jpg'
-import cartIcon from '@/assets/imgs/cart.png'
+import AllIcon from '@/assets/imgs/cate/all-collection.png'
+import OpenIcon from '@/assets/imgs/cate/open.png'
+import SearchIcon from '@/assets/imgs/cate/search.png'
+import ArrowDown from '@/assets/imgs/arrow-down.png'
+import ArrowUp from '@/assets/imgs/arrow-up.png'
 
-import 'taro-ui/dist/style/components/search-bar.scss'
-import 'taro-ui/dist/style/components/button.scss'
-import 'taro-ui/dist/style/components/icon.scss'
-import 'taro-ui/dist/style/components/tabs.scss'
 import './index.scss'
 
 class Categroy extends Component {
   state = {
-    keywords: '',
-    current: 0,
-    barList: [
-      { url: '', title: '高定' },
-      { url: '', title: '轻奢' },
-      { url: '', title: '高定' },
-      { url: '', title: '轻奢' }
+    showPopup: false,
+    cateList: [
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate1.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate2.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate3.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate4.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate4.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate4.png'
+      },
+      {
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/cate4.png'
+      }
     ],
-    goodsList: [
+    catePopupList: [
       {
-        price: 1,
-        pic: t1,
-        title: '高定',
-        id: 1
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/new arrival.png'
       },
       {
-        price: 2,
-        pic: t2,
-        title: '轻奢',
-        id: 1
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/limited time only.png'
+      }
+    ],
+    leftList: [
+      {
+        type: 'all',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/all-match.png'
       },
       {
-        price: 3,
-        pic: t3,
-        title: '高定',
-        id: 1
+        type: 'dating',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/dating.png'
+      }
+    ],
+    rightList: [
+      {
+        type: 'bussiness',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/business.png'
       },
       {
-        price: 4,
-        pic: t4,
-        title: '轻奢',
-        id: 1
-      },
-      {
-        price: 5,
-        pic: t1,
-        title: '高定',
-        id: 1
-      },
-      {
-        price: 6,
-        pic: t2,
-        title: '轻奢',
-        id: 1
+        type: 'party',
+        pic: 'http://121.5.150.116/dist/douchy-imgs/cate/party.png'
       }
     ]
   }
@@ -69,7 +71,6 @@ class Categroy extends Component {
   componentDidShow() {
     // console.log(.getTabBar())
     // const page = getCurrentPages()[0]
-
     // if (typeof page.getTabBar === 'function' && page.getTabBar()) {
     //   page.getTabBar().setData({
     //     selected: 1
@@ -77,88 +78,138 @@ class Categroy extends Component {
     // }
   }
 
-  onChange = (e) => {
-    console.log(e)
-    this.setState({ keywords: e })
+  openShowPopup = () => {
+    this.setState({ showPopup: true })
   }
 
-  onConfirm = () => {
-    Taro.navigateTo({ url: 'goods/list' })
+  closeShowPopup = () => {
+    this.setState({ showPopup: false })
   }
 
-  handleClick = (e) => {
-    this.setState({ current: e })
+  onJumpToSeries = (type) => () => {
+    Taro.navigateTo({ url: `/pages/series/list/index?type=${type}` })
   }
 
-  onJump = (id) => () => {
-    Taro.navigateTo({ url: `/pages/item/detail/index?id=${id}` })
+  onJumpToSearch = () => {
+    Taro.navigateTo({ url: '/pages/item/search/index' })
+  }
+
+  onJumpToOpen = () => {
+    Taro.navigateTo({ url: '/pages/item/open/index' })
+  }
+
+  onJumpToScene = (type) => () => {
+    Taro.navigateTo({ url: `/pages/series/scene/index?type=${type}` })
   }
 
   render() {
-    const { keywords, current, barList, goodsList } = this.state
+    const { showPopup, cateList, catePopupList, leftList, rightList } = this.state
 
-    const GoodsList =
-      goodsList &&
-      goodsList.map((item) => {
+    const CateList =
+      cateList &&
+      cateList.map((item) => {
         return (
-          <View key={item.url} className='goods-item' onClick={this.onJump(item.id)}>
-            <Image src={item.pic} mode='aspectFill' className='goods-img'></Image>
-            <View className='goods-info'>
-              <View className='goods-info__title'>{item.title}</View>
-              <View className='goods-info__detail'>
-                <View>
-                  <Text className='goods-info__tag'>{item.title}</Text>
-                </View>
-                <View className='goods-info__sales'>已售{item.price}</View>
-              </View>
-              <View className='goods-info__bottom'>
-                <View className='goods-info__bottom-price'>
-                  <Text className='goods-info__bottom-price-i'>￥</Text>
-                  {item.price}
-                </View>
-                <View className='goods-info__bottom-cart'>
-                  <Image
-                    src={cartIcon}
-                    mode='aspectFit'
-                    className='goods-info__bottom-cart_icon'
-                  ></Image>
-                </View>
-              </View>
-            </View>
+          <View key={item.pic} className='plate-nav__item' onClick={this.onJumpToSeries(item.type)}>
+            <Image src={item.pic} mode='aspectFit' className='plate-nav__item-img' />
+          </View>
+        )
+      })
+
+    const CatePopupList =
+      catePopupList &&
+      catePopupList.map((item) => {
+        return (
+          <View
+            key={item.pic}
+            className='plate-nav__item long-item'
+            onClick={this.onJumpToSeries(item.type)}
+          >
+            <Image src={item.pic} mode='aspectFit' className='plate-nav__item-img' />
           </View>
         )
       })
 
     return (
-      <View className='index'>
-        <View className='search-container'>
-          <AtSearchBar value={keywords} onChange={this.onChange} onConfirm={this.onConfirm} />
-        </View>
-        <View className='bar-container'>
-          <View className='bar-nav'>
-            <AtTabs
-              scroll
-              height='600px'
-              tabDirection='vertical'
-              current={current}
-              tabList={barList}
-              onClick={this.handleClick}
-            >
-              {barList &&
-                barList.map((item, index) => {
-                  return (
-                    <AtTabsPane tabDirection='vertical' current={current} index={index} key={index}>
-                      <View>
-                        <View className='goods'>{GoodsList}</View>
-                      </View>
-                    </AtTabsPane>
-                  )
-                })}
-            </AtTabs>
+      <View className={`cate ${showPopup ? 'hidden-pate' : ''}`}>
+        <View className='header'>
+          <Image src={AllIcon} mode='heightFix' className='header-logo' />
+          <View className='header-right'>
+            <View className='header-right__item' onClick={this.onJumpToSearch}>
+              <Image
+                src={SearchIcon}
+                mode='aspectFit'
+                className='header-right__item-icon search-icon'
+              ></Image>
+            </View>
+            <View className='header-right__item' onClick={this.onJumpToOpen}>
+              <Image
+                src={OpenIcon}
+                mode='aspectFit'
+                className='header-right__item-icon up-icon'
+              ></Image>
+            </View>
           </View>
         </View>
-        <Tabbar />
+        <View className='plate'>
+          <ScrollView scrollX enableFlex className='plate-nav'>
+            {CateList}
+          </ScrollView>
+          <Image
+            src={ArrowDown}
+            mode='aspectFit'
+            className='plate-nav__more'
+            onClick={this.openShowPopup}
+          />
+          <ScrollView scrollY className={`popup-container ${showPopup ? 'show-popup' : ''}`}>
+            <View className='plate-nav nav-popup'>
+              {CatePopupList}
+              {CateList}
+              <View className='plate-nav__item'>
+                <Image
+                  src={ArrowUp}
+                  mode='aspectFit'
+                  className='plate-nav__more up-icon'
+                  onClick={this.closeShowPopup}
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+        <View className='content'>
+          <View className='content-list'>
+            {leftList &&
+              leftList.map((item) => {
+                return (
+                  <View
+                    key={item.type}
+                    className='content-list__item'
+                    onClick={this.onJumpToScene(item.type)}
+                  >
+                    <Image src={item.pic} mode='widthFix' className='content-list__item-icon' />
+                  </View>
+                )
+              })}
+          </View>
+          <View className='content-list'>
+            {rightList &&
+              rightList.map((item) => {
+                return (
+                  <View
+                    key={item.type}
+                    className='content-list__item'
+                    onClick={this.onJumpToScene(item.type)}
+                  >
+                    <Image src={item.pic} mode='widthFix' className='content-list__item-icon' />
+                  </View>
+                )
+              })}
+          </View>
+        </View>
 
+        {/* <View className='loading-content'>
+          <LoadingStart />
+        </View> */}
+        <Tabbar />
       </View>
     )
   }

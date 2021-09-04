@@ -9,7 +9,7 @@ import './index.scss'
 class Entry extends Component {
   state = {
     entryBg: 'http://121.5.150.116/dist/douchy-imgs/entry.png',
-    entryTime: 3000
+    entryTime: 2000
   }
 
   componentDidMount() {

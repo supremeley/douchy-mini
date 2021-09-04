@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,163 @@
         {
           "name": "pages/home/index",
           "pathName": "pages/home/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/categroy/index",
+          "pathName": "pages/categroy/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/search/index",
+          "pathName": "pages/search/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/open/index",
+          "pathName": "pages/open/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/item/detail/index",
+          "pathName": "pages/item/detail/index",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/cart/index",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/center/index",
+          "pathName": "pages/center/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/series/all/index",
+          "pathName": "pages/series/all/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/series/list/index",
+          "pathName": "pages/series/list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/series/scene/index",
+          "pathName": "pages/series/scene/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/series/scene/detail/index",
+          "pathName": "pages/series/scene/detail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/list/index",
+          "pathName": "pages/order/list/index",
+          "query": "status=0",
+          "scene": null
+        },
+        {
+          "name": "pages/order/detail/index",
+          "pathName": "pages/order/detail/index",
+          "query": "id=undefined",
+          "scene": null
+        },
+        {
+          "name": "pages/order/refundList/index",
+          "pathName": "pages/order/refundList/index",
+          "query": "status=3",
+          "scene": null
+        },
+        {
+          "name": "pages/member/interests/index",
+          "pathName": "pages/member/interests/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/member/wish/index",
+          "pathName": "pages/member/wish/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/member/address/list/index",
+          "pathName": "pages/member/address/list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/member/address/editor/index",
+          "pathName": "pages/member/address/editor/index",
+          "query": "=undefined",
+          "scene": null
+        },
+        {
+          "name": "pages/order/progress/list/index",
+          "pathName": "pages/order/progress/list/index",
+          "query": "type=custom",
+          "scene": null
+        },
+        {
+          "name": "pages/order/refundList/index",
+          "pathName": "pages/order/refundList/index",
+          "query": "status=5",
+          "scene": null
+        },
+        {
+          "name": "pages/series/list/index",
+          "pathName": "pages/series/list/index",
+          "query": "type=undefined",
+          "scene": null
+        },
+        {
+          "name": "pages/member/size/list/index",
+          "pathName": "pages/member/size/list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/member/size/editor/index",
+          "pathName": "pages/member/size/editor/index",
+          "query": "=undefined",
+          "scene": null
+        },
+        {
+          "name": "pages/series/scene/detail/index",
+          "pathName": "pages/series/scene/detail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/item/detail/index",
+          "pathName": "pages/item/detail/index",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/member/wish/index",
+          "pathName": "pages/member/wish/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/item/detail/index",
+          "pathName": "pages/item/detail/index",
+          "query": "id=1",
           "scene": null
         }
       ]

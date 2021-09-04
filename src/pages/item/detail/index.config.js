@@ -1,3 +1,5 @@
 export default {
-  navigationBarTitleText: '商品详情'
+  navigationBarTitleText: 'DOUCHY SANDQUIST',
+  disableScroll: true,
+  enableShareAppMessage: true
 }

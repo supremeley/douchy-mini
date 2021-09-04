@@ -2,10 +2,10 @@ import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { Component } from 'react'
 import { View, Image, Text } from '@tarojs/components'
 import { AtSearchBar } from 'taro-ui'
-import GoodsItem from '@/components/goodsItem'
+// import GoodsItem from '@/components/goodsItem'
 
-import t1 from '@/assets/imgs/home/bg1.jpg'
-import cartIcon from '@/assets/imgs/cart.png'
+// import t1 from '@/assets/imgs/home/bg1.jpg'
+// import cartIcon from '@/assets/imgs/cart.png'
 
 import 'taro-ui/dist/style/components/search-bar.scss'
 import 'taro-ui/dist/style/components/button.scss'
@@ -17,31 +17,31 @@ class ItemList extends Component {
   state = {
     keywords: '',
     goodsList: [
-      {
-        price: 1,
-        pic: t1,
-        title: '蔬菜'
-      },
-      {
-        price: 1,
-        pic: t1,
-        title: '蔬菜'
-      },
-      {
-        price: 1,
-        pic: t1,
-        title: '蔬菜'
-      },
-      {
-        price: 1,
-        pic: t1,
-        title: '蔬菜'
-      },
-      {
-        price: 1,
-        pic: t1,
-        title: '蔬菜'
-      }
+      // {
+      //   price: 1,
+      //   pic: t1,
+      //   title: '蔬菜'
+      // },
+      // {
+      //   price: 1,
+      //   pic: t1,
+      //   title: '蔬菜'
+      // },
+      // {
+      //   price: 1,
+      //   pic: t1,
+      //   title: '蔬菜'
+      // },
+      // {
+      //   price: 1,
+      //   pic: t1,
+      //   title: '蔬菜'
+      // },
+      // {
+      //   price: 1,
+      //   pic: t1,
+      //   title: '蔬菜'
+      // }
     ]
   }
 

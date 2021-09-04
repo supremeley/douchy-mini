@@ -1,0 +1,57 @@
+.wish {
+  &-container {
+    // background: #fff;
+    // border-radius: 25px;
+    padding: 8px 16px;
+    position: relative;
+    // margin: 12px 40px;
+    .active-item {
+      color: $global-golden-b;
+      border-bottom: 2px solid $global-golden-b;
+    }
+  }
+  &-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    height: 60px;
+    justify-content: space-around;
+    &__item {
+      font-size: 32px;
+      color: $global-text-gray;
+      line-height: 56px;
+      transition: 0.2s;
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    &__goods {
+      width: 592px;
+      height: 376px;
+      display: flex;
+    }
+    &__item {
+      position: relative;
+      width: 296px;
+      &-img {
+        width: 296px;
+        height: 376px;
+      }
+      &-icon {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 32px;
+        top: 32px;
+      }
+    }
+    &__more {
+      height: 80px;
+      flex-shrink: 0;
+      width: 60px;
+    }
+  }
+}

@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: '分类'
+  navigationBarTitleText: 'DOUCHY SANDQUIST',
+  // disableScroll: true
 }

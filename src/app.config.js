@@ -6,45 +6,57 @@ export default {
     'pages/center/index',
     'pages/login/index',
     'pages/entry/index',
-
-    // 'pages/order/cancle/index',
-    // 'pages/order/list/index',
-    // 'pages/order/detail/index',
-    // 'pages/item/list/index',
-    // 'pages/item/detail/index',
-
+    'pages/checkout/index',
     // 'pages/checkout/index',
     // 'pages/checkout/success/index',
-    // 'pages/address/list/index',
-    // 'pages/address/editor/index'
   ],
   subpackages: [
-    // {
-    //   root: 'pages/order',
-    //   pages: [
-    //     'list/index',
-    //     'detail/index',
-    //   ]
-    // },
-    // {
-    //   root: 'pages/item',
-    //   pages: [
-    //     'list/index',
-    //     'detail/index',
-    //   ]
-    // },
-    // {
-    //   root: 'pages/address',
-    //   pages: [
-    //     'list/index',
-    //     'editor/index',
-    //   ]
-    // }
+    {
+      root: 'pages/item',
+      pages: [
+        // 'list/index',
+        'detail/index',
+        'open/index',
+        'search/index',
+      ]
+    },
+    {
+      root: 'pages/series',
+      pages: [
+        'all/index',
+        'list/index',
+        'scene/index',
+        'scene/detail/index',
+      ]
+    },
+    {
+      root: 'pages/order',
+      pages: [
+        'list/index',
+        'detail/index',
+        'refundList/index',
+        'progress/list/index',
+        'progress/detail/index',
+
+      ]
+    },
+    {
+      root: 'pages/member',
+      pages: [
+        'interests/index',
+        'wish/index',
+        'address/list/index',
+        'address/editor/index',
+        'size/list/index',
+        'size/editor/index',
+      ]
+    },
+
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'Douchy Sandquist',
+    navigationBarTitleText: 'DOUCHY SANDQUIST',
     navigationBarTextStyle: 'black'
   },
   // tabBar: {
